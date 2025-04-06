@@ -7,14 +7,16 @@ import {
   faGear,
   faChevronDown,
   faRotate,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { faMessage } from "@fortawesome/free-regular-svg-icons";
 import User from "../../assets/user.jpg";
 import Logo from "../../assets/Logo.png";
 
-const MainNavbar = ({ isMenuOpen }) => {
+const MainNavbar = () => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to handle menu toggle
 
   const navItems = [
     {
@@ -54,13 +56,18 @@ const MainNavbar = ({ isMenuOpen }) => {
     },
   ];
 
+  // Toggle function for hamburger menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="bg-[#003DA0] p-4 text-white">
       <div className="w-full px-4">
         <div className="flex items-center justify-between h-16">
           {/* Desktop Navigation with Logo */}
-          <nav className="hidden md:flex items-center space-x-4">
-            <div w-48>
+          <nav className="hidden lg:flex items-center space-x-4">
+            <div className="w-48">
               <img src={Logo} alt="Logo" className="h-8 w-auto mr-4" />
             </div>
             {navItems.map((item, index) => (
@@ -72,14 +79,9 @@ const MainNavbar = ({ isMenuOpen }) => {
               >
                 <button className="flex items-center py-2 text-sm font-medium hover:bg-blue-600 rounded-md transition-colors duration-200">
                   {item.title}
-                  {/* <FontAwesomeIcon
-                    icon={faChevronDown}
-                    className="ml-1 w-3 h-3"
-                  /> */}
                 </button>
-
                 {/* Dropdown Menu */}
-                {/* {activeDropdown === index && (
+                {activeDropdown === index && (
                   <div className="absolute z-50 left-0 mt-1 w-48 bg-white rounded-md shadow-lg py-1">
                     {item.subItems.map((subItem, subIndex) => (
                       <a
@@ -91,20 +93,30 @@ const MainNavbar = ({ isMenuOpen }) => {
                       </a>
                     ))}
                   </div>
-                )} */}
+                )}
               </div>
             ))}
           </nav>
 
+          {/* Hamburger Menu Icon for Mobile and Tablet */}
+          <div className="lg:hidden flex items-center">
+            <button
+              onClick={toggleMenu} // Toggle the menu on button click
+              className="p-2 rounded-md text-white focus:outline-none hover:bg-blue-600"
+            >
+              <FontAwesomeIcon icon={faBars} className="w-6 h-6" />
+            </button>
+          </div>
+
           {/* Search and Icons */}
           <div className="flex items-center space-x-4 ml-auto">
             {/* Desktop Search */}
-            <div className="relative hidden md:block">
+            <div className="relative hidden md:block lg:block">
               <input
                 type="text"
                 placeholder="Tìm kiếm"
-                className={`bg-[#FFFFFF33] text-white placeholder-gray-300 pl-8 pr-4 py-1.5 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 w-48 lg:w-48 transition-all duration-200 ${
-                  isSearchFocused ? "w-52  lg:w-80" : ""
+                className={`bg-[#FFFFFF33] text-white placeholder-gray-300 pl-8 pr-4 py-1.5 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 w-56 lg:w-64 xl:w-80 transition-all duration-200 ${
+                  isSearchFocused ? "w-72 lg:w-80" : ""
                 }`}
                 onFocus={() => setIsSearchFocused(true)}
                 onBlur={() => setIsSearchFocused(false)}
@@ -137,11 +149,11 @@ const MainNavbar = ({ isMenuOpen }) => {
               </button>
               {/* Logo hoặc Tên người dùng */}
               <div className="flex items-center">
-                <button className="w-12 h-12 p-2  ">
+                <button className="w-12 h-12 p-2">
                   <img className="rounded-full" src={User} alt="" />
                 </button>
                 <div>
-                  <div className="text-white ">
+                  <div className="text-white">
                     <FontAwesomeIcon icon={faChevronDown} />
                   </div>
                 </div>
@@ -150,12 +162,12 @@ const MainNavbar = ({ isMenuOpen }) => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile/Tablet Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden bg-blue-800 rounded-b-lg">
+          <div className="md:hidden lg:hidden bg-blue-800 rounded-b-lg">
             {/* Mobile Logo */}
             <div className="p-4 border-b border-blue-700">
-              <img src="/logo.png" alt="Logo" className="h-8 w-auto" />
+              <img src={Logo} alt="Logo" className="h-8 w-auto" />
             </div>
 
             {/* Mobile Search */}

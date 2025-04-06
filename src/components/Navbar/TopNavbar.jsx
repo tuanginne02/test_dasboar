@@ -5,7 +5,7 @@ import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 const TopNavbar = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <div className="bg-blue-600 md:bg-transparent">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 hidden">
         <div className="flex items-center h-12 md:h-0">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}

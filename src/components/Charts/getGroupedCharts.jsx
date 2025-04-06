@@ -8,7 +8,7 @@ function getGroupedCharts() {
   return (
     <div className="p-4">
       {/* Chart Top */}
-      <div className="flex flex-col md:flex-row justify-between gap-4">
+      <div className="flex flex-col md:flex-col lg:flex-row justify-between gap-4">
         {/* Chart Kế Hoạch Sản Xuất */}
         <div className="flex-1">
           <Column />
@@ -20,7 +20,7 @@ function getGroupedCharts() {
       </div>
 
       {/* Bottom Charts */}
-      <div className="flex justify-between flex-col md:flex-row mt-10">
+      <div className="flex justify-between flex-col md:flex-col lg:flex-row mt-10">
         <div className="h-96">
           <Pie />
         </div>
