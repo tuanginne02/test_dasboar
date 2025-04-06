@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchMaterialTableData } from "../../Server/api/MaterialTableApi";
 import HeaderWithDropdown from "../HeaderWithDrop/HeaderWithDrop";
-import User from '../../assets/user.jpg'
+import User from "../../assets/user.jpg";
 
 const MaterialTable = () => {
   const [data, setData] = useState([]);
@@ -84,33 +84,36 @@ const MaterialTable = () => {
   }
 
   return (
-    <div className="w-full p-4 h-[33rem]  bg-white rounded-lg shadow">
-      <HeaderWithDropdown title="Nguyên Vật Liệu Cần Mua" titleDrop="Tuần Này" />
+    <div className="w-full p-4 h-[33rem] mt-64 md:mt-0  bg-white rounded-lg shadow">
+      <HeaderWithDropdown
+        title="Nguyên Vật Liệu Cần Mua"
+        titleDrop="Tuần Này"
+      />
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
               <th
                 scope="col"
-                className="px-4 py-3 font-bold text-left text-xs uppercase tracking-wider"
+                className="md:px-4 md:py-3  font-bold text-left text-xs uppercase tracking-wider"
               >
                 STT
               </th>
               <th
                 scope="col"
-                className="px-4 py-3 font-bold text-left text-xs uppercase tracking-wider"
+                className="md:px-4 md:py-3  font-bold text-left text-xs uppercase tracking-wider"
               >
                 Nguyên vật liệu
               </th>
               <th
                 scope="col"
-                className="px-4 py-3 font-bold text-left text-xs uppercase tracking-wider"
+                className="md:px-4 md:py-3  font-bold text-left text-xs uppercase tracking-wider"
               >
                 Đơn vị tính
               </th>
               <th
                 scope="col"
-                className="px-4 py-3 font-bold text-left text-xs uppercase tracking-wider"
+                className="md:px-4 md:py-3  font-bold text-left text-xs uppercase tracking-wider"
               >
                 Số lượng
               </th>

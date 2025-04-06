@@ -30,18 +30,6 @@ const mockColumnData = [{
     plan: 95,
     actual: 80
 },
-{
-    month: "T6",
-    id: 6,
-    plan: 100,
-    actual: 85
-},
-{
-    month: "T7",
-    id: 7,
-    plan: 110,
-    actual: 95
-},
 ];
 
 // const mockColumnData = [];

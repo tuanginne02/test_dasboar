@@ -216,24 +216,24 @@ function Pie() {
         </div>
 
         {/* Stats Grid */}
-        <div className="relative h-[11rem] -bottom-[80px]">
+        <div className="relative h-[7rem] md:h-[11rem] md:-bottom-[80px] -bottom-2">
           <div className="grid grid-cols-3 gap-4">
             {/* Pending */}
             <div className="bg-white rounded-lg p-4 shadow-sm">
               <div className="text-2xl font-bold text-yellow-500">0</div>
-              <div className="text-sm text-gray-600">Chưa hoàn thành</div>
+              <div className="md:text-sm text-xs text-gray-600">Chưa hoàn thành</div>
             </div>
 
             {/* In Progress */}
             <div className="bg-white rounded-lg p-4 shadow-sm">
               <div className="text-2xl font-bold text-blue-500">0</div>
-              <div className="text-sm text-gray-600">Đang sản xuất</div>
+              <div className="md:text-sm text-xs text-gray-600">Đang sản xuất</div>
             </div>
 
             {/* Completed */}
             <div className="bg-white rounded-lg p-4 shadow-sm">
               <div className="text-2xl font-bold text-green-500">0</div>
-              <div className="text-sm text-gray-600">Hoàn thành</div>
+              <div className="md:text-sm text-xs text-gray-600">Hoàn thành</div>
             </div>
           </div>
         </div>
@@ -242,7 +242,7 @@ function Pie() {
   }
 
   return (
-    <div className="w-full max-w-md mx-auto p-6 rounded-lg shadow">
+    <div className="w-full max-w-md md:mx-10 p-6 rounded-lg shadow">
       <HeaderWithDropdown title="Tình Hình Sản Xuất" titleDrop="Hôm Nay" />
       {/* Circular Progress */}
       {/* Donut Chart */}
@@ -250,7 +250,7 @@ function Pie() {
         {data.length > 0 ? (
           data.map((item, index) => (
             <div key={index}>
-              <div className="relative w-full h-[250px]">
+              <div className="relative w-full md:h-[250px] h-[200px]">
                 {/* Center Text */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10">
                   <span className="text-basebase font-bold">{item.total}</span>
@@ -441,14 +441,14 @@ function Pie() {
                 </svg>
               </div>
               {/* Stats Grid */}
-              <div className="relative h-[11rem] -bottom-[80px]">
+              <div className="relative h-[7rem] md:h-[11rem] md:-bottom-[80px] -bottom-2">
                 <div className="grid grid-cols-3 gap-4">
                   {/* Pending */}
                   <div className="bg-white rounded-lg p-4 shadow-sm">
                     <div className="text-2xl font-bold text-yellow-500">
                       {item.pending}
                     </div>
-                    <div className="text-sm text-gray-600">Chưa hoàn thành</div>
+                    <div className="md:temd:xt-sm text-xs text-gray-600">Chưa hoàn thành</div>
                   </div>
 
                   {/* In Progress */}
@@ -456,7 +456,7 @@ function Pie() {
                     <div className="text-2xl font-bold text-blue-500">
                       {item.inProgress}
                     </div>
-                    <div className="text-sm text-gray-600">Đang sản xuất</div>
+                    <div className="md:text-sm text-xs text-gray-600">Đang sản xuất</div>
                   </div>
 
                   {/* Completed */}
@@ -464,7 +464,7 @@ function Pie() {
                     <div className="text-2xl font-bold text-green-500">
                       {item.completed}
                     </div>
-                    <div className="text-sm text-gray-600">Hoàn thành</div>
+                    <div className="md:text-sm text-xs text-gray-600">Hoàn thành</div>
                   </div>
                 </div>
               </div>
@@ -663,24 +663,24 @@ function Pie() {
               </svg>
             </div>
             {/* Stats Grid */}
-            <div className="relative h-[11rem] -bottom-[80px]">
+            <div className="relative h-[7rem] md:h-[11rem] md:-bottom-[80px] -bottom-2">
               <div className="grid grid-cols-3 gap-4">
                 {/* Pending */}
                 <div className="bg-white rounded-lg p-4 shadow-sm">
                   <div className="text-2xl font-bold text-yellow-500">0</div>
-                  <div className="text-sm text-gray-600">Chưa hoàn thành</div>
+                  <div className="md:temd:xt-sm text-xs text-gray-600">Chưa hoàn thành</div>
                 </div>
 
                 {/* In Progress */}
                 <div className="bg-white rounded-lg p-4 shadow-sm">
                   <div className="text-2xl font-bold text-blue-500">0</div>
-                  <div className="text-sm text-gray-600">Đang sản xuất</div>
+                  <div className="md:text-sm text-xs text-gray-600">Đang sản xuất</div>
                 </div>
 
                 {/* Completed */}
                 <div className="bg-white rounded-lg p-4 shadow-sm">
                   <div className="text-2xl font-bold text-green-500">0</div>
-                  <div className="text-sm text-gray-600">Hoàn thành</div>
+                  <div className="md:text-sm text-xs text-gray-600">Hoàn thành</div>
                 </div>
               </div>
             </div>

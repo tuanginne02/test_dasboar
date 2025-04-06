@@ -61,7 +61,7 @@ const ChartList = () => {
   }
 
   return (
-    <div className="space-y-4 p-4 rounded-lg shadow">
+    <div className="space-y-4 p-4  rounded-lg shadow mt-16 md:mt-0 md:m-auto md:mr-10">
       <HeaderWithDropdown
         title="Tiến Độ Sản Xuất Theo Nhóm"
         titleDrop="Hoàn Thành"
@@ -70,7 +70,7 @@ const ChartList = () => {
       {data.map((item, index) => (
         <div
           key={index}
-          className="gap-4 h-[2.8rem]"
+          className="gap-4 md:h-[2.8rem] h-14"
         >
           {!data || data.length === 0 ? (
             <div className="flex flex-col gap-4 p-4"></div>

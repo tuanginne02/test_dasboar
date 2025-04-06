@@ -11,7 +11,7 @@ const HeaderWithDropdown = ({ title, titleDrop }) => {
     return (
         <div className="flex justify-between items-center m-4">
             {/* Title */}
-            <div className="text-base font-bold text-gray-800">
+            <div className="md:text-base text-sm font-bold text-gray-800">
                 <span>{title}</span>
             </div>
 
@@ -21,38 +21,38 @@ const HeaderWithDropdown = ({ title, titleDrop }) => {
                     <div>
                         <button
                             onClick={toggleDropdown}
-                            className="flex justify-between items-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700"
+                            className="flex justify-between items-center w-full rounded-md border border-gray-300 shadow-sm px-2 py-1 md:px-4 md:py-2 bg-white md:text-sm text-xs font-medium text-gray-700"
                         >
-                            <FontAwesomeIcon icon={faCalendar} className="text-gray-500" />
-                            <span className="mx-2">{titleDrop}</span>
+                            <FontAwesomeIcon icon={faCalendar} className="text-gray-500 " />
+                            <span className="mx-2 ">{titleDrop}</span>
                             <FontAwesomeIcon icon={faChevronDown} className="text-gray-500" />
                         </button>
                     </div>
 
                     {isOpen && (
-                        <div className="absolute right-0 z-10 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                        <div className="absolute right-0 z-10 mt-2 md:w-56 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                             <div className="py-1" role="none">
                                 <a
                                     href="#"
-                                    className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"
+                                    className="text-gray-700 block md:px-4 md:py-2 px-2 py-1 text-sm hover:bg-gray-100"
                                 >
                                     Hôm nay
                                 </a>
                                 <a
                                     href="#"
-                                    className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"
+                                    className="text-gray-700 block md:px-4 md:py-2 px-2 py-1 text-sm hover:bg-gray-100"
                                 >
                                     Tuần này
                                 </a>
                                 <a
                                     href="#"
-                                    className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"
+                                    className="text-gray-700 block md:px-4 md:py-2 px-2 py-1 text-sm hover:bg-gray-100"
                                 >
                                     Tháng này
                                 </a>
                                 <a
                                     href="#"
-                                    className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"
+                                    className="text-gray-700 block md:px-4 md:py-2 px-2 py-1 text-sm hover:bg-gray-100"
                                 >
                                     Năm nay
                                 </a>

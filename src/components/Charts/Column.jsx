@@ -7,7 +7,6 @@ const Column = () => {
   const [loading, setLoading] = useState(true);
   const [hoveredId, setHoveredId] = useState(null);
 
-  // Fixed data for axes
   const months = [
     "Áo ba lỗ",
     "Áo sơ mi",
@@ -15,8 +14,8 @@ const Column = () => {
     "Quần baggy",
     "Quần jogger",
   ];
-  const maxValue = 100; // Fixed max value for Y axis
-  const maxHeight = 250; // Maximum height in pixels
+  const maxValue = 100;
+  const maxHeight = 250;
 
   useEffect(() => {
     const loadData = async () => {
@@ -35,7 +34,7 @@ const Column = () => {
 
   if (loading) {
     return (
-      <div className="w-full p-[18px]">
+      <div className="w-full p-4">
         <div className="flex justify-center gap-4 mt-4">
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 bg-gray-200 rounded animate-pulse"></div>
@@ -54,44 +53,35 @@ const Column = () => {
   }
 
   const renderRow = (item) => {
-    // const widthPercentage = (data[index]?.plan / maxValue) * maxHeight;
-    const widthPercentage1 = (item.plan / maxValue) * maxHeight;
-    const widthPercentage2 = (item.actual / maxValue) * maxHeight;
+    const planHeight = (item.plan / maxValue) * maxHeight;
+    const actualHeight = (item.actual / maxValue) * maxHeight;
+
     return (
       <div
-        className="flex items-baseline w-full mb-4"
+        className="flex flex-col items-center relative"
         onMouseEnter={() => setHoveredId(item.id)}
         onMouseLeave={() => setHoveredId(null)}
       >
-        {/* <div className="w-48 text-gray-600 text-sm text-right mr-4">
-          {item.label}
-        </div> */}
-
-        <div className="flex items-baseline relative ">
+        <div className="flex items-end gap-2 h-[250px]">
           <div
-            className="w-2 group  mr-2 bg-blue-500 rounded"
-            style={{
-              height: `${widthPercentage1}px`,
-            }}
-            // style={{ width: `${widthPercentage}%` }}
+            className="w-3 bg-blue-500 rounded relative"
+            style={{ height: `${planHeight}px` }}
           >
-            {hoveredId === item.id && item.plan && (
-              <div className="absolute right-0 -top-6 -translate-y-1/2 bg-black text-white px-1 py-1 w-16 rounded text-sm ">
+            {hoveredId === item.id && (
+              <div className="absolute -left-4 bottom-full md:bottom-44 -mb-5 px-2 py-1 text-xs text-white bg-black rounded whitespace-nowrap z-10">
                 {item.plan.toLocaleString()} cái
               </div>
-            )}
+             )} 
           </div>
           <div
-            className="w-2 group bg-red-500 rounded"
-            style={{
-              height: `${widthPercentage2}px`,
-            }}
+            className="w-3 bg-green-500 rounded relative"
+            style={{ height: `${actualHeight}px` }}
           >
-            {hoveredId === item.id && item.actual && (
-              <div className="absolute right-0 -top-6 -translate-y-1/2 bg-black text-white px-1 py-1 w-16 rounded text-sm ">
+            {hoveredId === item.id && (
+              <div className="absolute -left-4 bottom-full  -mb-5 px-2 py-1 text-xs text-white bg-black rounded whitespace-nowrap z-10">
                 {item.actual.toLocaleString()} cái
               </div>
-            )}
+             )} 
           </div>
         </div>
       </div>
@@ -99,77 +89,64 @@ const Column = () => {
   };
 
   return (
-    <div className="w-full p-[18px] mr-8 rounded-lg shadow">
+    <div className="w-full p-4 rounded-lg shadow bg-white">
       <HeaderWithDropdown title="Kế Hoạch Sản Xuất" titleDrop="Quý Này" />
+
       {/* Legend */}
-      <div className="flex justify-end  gap-4 mt-4">
+      <div className="flex justify-end gap-4 mt-4">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-4 bg-blue-500 rounded-xl"></div>
-          <span className="text-sm text-gray-600">Kế hoạch</span>
+          <div className="w-4 h-2 md:w-8 md:h4 bg-blue-500 rounded-xl"></div>
+          <span className="md:text-sm text-xs text-gray-600">Kế hoạch</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-4 bg-green-500 rounded-xl"></div>
-          <span className="text-sm text-gray-600 ">Thực hiện</span>
+          <div className="w-4 h-2 md:w-8 md:h4 bg-green-500 rounded-xl"></div>
+          <span className="md:text-sm text-xs text-gray-600">Thực hiện</span>
         </div>
       </div>
-      <div className="relative h-[23rem]">
-        {/* Y-axis labels */} {/* Origin label "Tháng" */}
-        <div
-          className="absolute text-gray-600 text-sm font-bold"
-          style={{
-            left: "0",
-            top: "-33px",
-          }}
-        >
+
+      {/* Chart */}
+      <div className="relative mt-6 overflow-x-auto">
+        {/* Y-axis label */}
+        <div className="absolute left-0 -top-8 text-gray-600 text-sm font-semibold">
           Cái
         </div>
-        <div className="absolute left-0 h-full flex flex-col justify-between text-gray-600 text-sm pb-16">
-          {[...Array(6)].map((_, index) => (
-            <div key={index} className="relative flex items-center h-6">
-              {Math.round((maxValue * (5 - index)) / 5)}
-            </div>
-          ))}
-        </div>
-        {/* Chart content */}
-        <div className="ml-12 h-full flex items-end pb-8">
-          {/* No data message */}
-          <div className="flex-1 flex flex-col items-center justify-end gap-2">
+
+        <div className="flex">
+          {/* Y-axis ticks */}
+          <div className="flex flex-col justify-between text-gray-500 text-sm pr-2 h-[250px]">
+            {[...Array(6)].map((_, index) => (
+              <div key={index}>{Math.round((maxValue * (5 - index)) / 5)}</div>
+            ))}
+          </div>
+
+          {/* Bars */}
+          <div className="flex-1 overflow-x-auto pl-4 md:pl-12">
             {!data || data.length === 0 ? (
-              // No data state - show empty bars container
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="text-center bg-white bg-opacity-90 px-4 py-2 rounded">
-                  <p className="text-sm text-gray-500">Không có dữ liệu</p>
-                </div>
+              <div className="flex justify-center items-center h-[250px]">
+                <span className="text-gray-400 text-sm">Không có dữ liệu</span>
               </div>
             ) : (
-              <div className="space-y-4 flex items-baseline  w-[45rem]">
+              <div className="flex gap-6 md:gap-24">
                 {data.map((item) => (
-                  <React.Fragment key={item.id}>
-                    {renderRow(item)}
-                  </React.Fragment>
+                  <div key={item.id}>{renderRow(item)}</div>
                 ))}
               </div>
             )}
 
-            {/* X-axis label */}
-            <div className="flex justify-between w-[45rem]">
-              {months.map((month, index) => (
-                <div key={index} className="text-sm text-gray-600 mt-2">
-                  {month}
+            {/* X-axis labels */}
+            <div className="flex md:gap-[5.5rem] gap-4 mt-4 text-xs md:text-sm text-gray-600">
+              {months.map((label, i) => (
+                <div key={i} className="w-[40px] text-center">
+                  {label}
                 </div>
               ))}
             </div>
+
+            {/* X-axis title */}
+            <div className="absolute md:text-sm text-xs font-semibold text-gray-600 md:-mt-10 md:-ml-20 -mt-9 -ml-12">
+              Mặt Hàng
+            </div>
           </div>
-        </div>
-        {/* Origin label "Tháng" */}
-        <div
-          className="absolute text-gray-600 text-sm font-bold"
-          style={{
-            left: "0",
-            bottom: "33px",
-          }}
-        >
-          Mặt Hàng
         </div>
       </div>
     </div>

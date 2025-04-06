@@ -6,23 +6,28 @@ import Pie from "./Pie";
 
 function getGroupedCharts() {
   return (
-    <div>
+    <div className="p-4">
       {/* Chart Top */}
-      <div className="flex justify-between m-4">
-        {/* Chart Kế Hoạch Sản Xuất  */}
-        <Column />
-        {/* Chart Top 5 KH  */}
-        <Rows />
+      <div className="flex flex-col md:flex-row justify-between gap-4">
+        {/* Chart Kế Hoạch Sản Xuất */}
+        <div className="flex-1">
+          <Column />
+        </div>
+        {/* Chart Top 5 KH */}
+        <div className="flex-1">
+          <Rows />
+        </div>
       </div>
-      <div className="flex justify-between items-center mt-16">
-        {/* Chart Kế Hoạch Sản Xuất  */}
-        <div className="h-96 mx-4 w-[30rem]">
+
+      {/* Bottom Charts */}
+      <div className="flex justify-between flex-col md:flex-row mt-10">
+        <div className="h-96">
           <Pie />
         </div>
-        <div className="h-96 mx-4 w-[30rem]">
+        <div className="  h-96">
           <ChartList />
         </div>
-        <div className="h-96 mx-4 w-[30rem]">
+        <div className=" h-96">
           <MaterialTable />
         </div>
       </div>
